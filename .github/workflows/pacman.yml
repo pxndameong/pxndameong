@@ -2,7 +2,7 @@ name: Generate pacman animation
 
 on:
   schedule:
-    - cron: "0 */12 * * *"  # jalankan tiap 12 jam
+    - cron: "0 */6 * * *"
   workflow_dispatch:
   push:
     branches:
