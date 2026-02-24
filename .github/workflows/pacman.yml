@@ -2,8 +2,8 @@ name: Generate pacman animation
 
 on:
   schedule:
-    - cron: "0 */6 * * *"
-  workflow_dispatch:
+    - cron: "0 */6 * * *" # Berjalan setiap 6 jam
+  workflow_dispatch: # Memungkinkan jalankan manual
   push:
     branches:
       - main
@@ -13,43 +13,31 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10 # Ditambah sedikit karena proses render butuh waktu
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Update ke v4 (terbaru)
 
       - name: Generate pacman contribution graph
         uses: abozanona/pacman-contribution-graph@main
+        env:
+          # Menambah limit memori Node.js ke 4GB untuk mencegah Heap Out of Memory
+          NODE_OPTIONS: "--max-old-space-size=4096"
         with:
           github_user_name: ${{ github.repository_owner }}
 
-      - name: Debug generated files
-        run: |
-          echo "Menampilkan semua file yang dihasilkan:"
-          find . -type f
-          echo "Isi direktori root:"
-          ls -la
-
-      - name: Create output directory and move files
+      - name: Prepare output directory
         run: |
           mkdir -p dist
-          if [ -f pacman-contribution-graph.svg ]; then
-            mv pacman-contribution-graph.svg dist/
-          else
-            echo "❌ pacman-contribution-graph.svg tidak ditemukan"
-          fi
-
-          if [ -f pacman-contribution-graph-dark.svg ]; then
-            mv pacman-contribution-graph-dark.svg dist/
-          else
-            echo "❌ pacman-contribution-graph-dark.svg tidak ditemukan"
-          fi
-
-          echo "✅ Isi folder dist:"
+          # Menggunakan globbing untuk memindahkan semua file svg hasil generate
+          mv pacman-contribution-graph*.svg dist/ 2>/dev/null || echo "⚠️ File SVG tidak ditemukan"
+          
+          echo "✅ Isi folder dist saat ini:"
           ls -la dist
 
       - name: Push to output branch
-        uses: crazy-max/ghaction-github-pages@v3.1.0
+        uses: crazy-max/ghaction-github-pages@v4 # Update ke v4 (terbaru)
         with:
           target_branch: output
           build_dir: dist
