@@ -2,8 +2,8 @@ name: Generate pacman animation
 
 on:
   schedule:
-    - cron: "0 */6 * * *" # Berjalan setiap 6 jam
-  workflow_dispatch: # Memungkinkan jalankan manual
+    - cron: "0 */6 * * *" 
+  workflow_dispatch: 
   push:
     branches:
       - main
@@ -13,16 +13,16 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
-    timeout-minutes: 10 # Ditambah sedikit karena proses render butuh waktu
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4 # Update ke v4 (terbaru)
+        uses: actions/checkout@v4 
 
       - name: Generate pacman contribution graph
         uses: abozanona/pacman-contribution-graph@main
         env:
-          # Menambah limit memori Node.js ke 4GB untuk mencegah Heap Out of Memory
+
           NODE_OPTIONS: "--max-old-space-size=4096"
         with:
           github_user_name: ${{ github.repository_owner }}
@@ -37,7 +37,7 @@ jobs:
           ls -la dist
 
       - name: Push to output branch
-        uses: crazy-max/ghaction-github-pages@v4 # Update ke v4 (terbaru)
+        uses: crazy-max/ghaction-github-pages@v4
         with:
           target_branch: output
           build_dir: dist
