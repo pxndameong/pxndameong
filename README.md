@@ -1,7 +1,7 @@
 ## Yo! Tsaqib here! 
 
 <p align="center">
-  <img src="profile-3d-contrib/profile-night-rainbow.svg" width="100%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=pxndameong&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
 </p>
 
 ### Connect with me
