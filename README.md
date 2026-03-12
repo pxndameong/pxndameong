@@ -1,6 +1,8 @@
 ## Yo! Tsaqib here! 
 
-[![Tsaqib's Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=pxndameong&theme=react-dark&bg_color=0D1117&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=pxndameong&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
+</p>
 
 ### Connect with me
 
