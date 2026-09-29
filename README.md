@@ -1,6 +1,6 @@
 ## Yo! Tsaqib here! 
 
-[![ouch](https://github-readme-activity-graph.vercel.app/graph?username=pxndameong&theme=react-dark&bg_color=0D1117&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
+[![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=amtsaqib&theme=react-dark&bg_color=0D1117&hide_border=true)](https://github.com/ashutosh00710/github-readme-activity-graph)
 
 ### Connect with me
 
